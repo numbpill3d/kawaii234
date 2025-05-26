@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>~* KAWAII DIGITAL SHRINE *~ [EST. 1997]</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+New&family=Comic+Sans+MS&family=IBM+Plex+Mono:wght@300;400;700&family=JetBrains+Mono:wght@300;400;700&family=Fira+Code:wght@300;400;700&family=Source+Code+Pro:wght@300;400;700&family=Inconsolata:wght@300;400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;700&family=Audiowide&family=Electrolize&family=Michroma&family=Share+Tech+Mono&display=swap');
+        
+        :root {
+            --neon-pink: #ff00ff;
+            --neon-cyan: #00ffff;
+            --neon-green: #00ff00;
+            --kawaii-pink: #ffb6c1;
+            --kawaii-blue: #add8e6;
+            --kawaii-yellow: #fffacd;
+            --dark-bg: #000080;
+            --terminal-green: #00ff41;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'IBM Plex Mono', 'Fira Code', monospace;
+            background: linear-gradient(45deg, var(--dark-bg), #4b0082, #000080, #2d0a4e, #1a0033);
+            background-size: 600% 600%;
+            animation: gradientShift 12s ease-in-out infinite, matrixRain 20s linear infinite;
+            color: var(--terminal-green);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 0, 0.05) 0%, transparent 50%);
+            animation: nebula 15s ease-in-out infinite alternate;
+            z-index: -2;
+        }
+
+        @keyframes nebula {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.7; }
+        }
+
+        @keyframes matrixRain {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 50% 100%; }
+            75% { background-position: 50% 0%; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            color: var(--kawaii-yellow);
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+            border: 3px solid var(--neon-green);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px var(--neon-pink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: diagonal-lines 10s linear infinite;
+        }
+
+        @keyframes diagonal-lines {
+            0% { transform: translateX(-100px) translateY(-100px); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+
+        .header h1 {
+            font-family: 'Orbitron', 'Audiowide', 'Electrolize', monospace;
+            font-size: 2.8em;
+            color: #000;
+            text-shadow: 
+                2px 2px 0 var(--kawaii-yellow),
+                4px 4px 0 var(--neon-pink),
+                6px 6px 0 var(--neon-cyan);
+            animation: bounce 2s infinite, textGlitch 4s infinite;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 3px;
+        }
+
+        @keyframes textGlitch {
+            0%, 90%, 100% { transform: translateX(0); }
+            92% { transform: translateX(-2px); }
+            94% { transform: translateX(2px); }
+            96% { transform: translateX(-1px); }
+            98% { transform: translateX(1px); }
+        }
+
+        .ascii-art {
+            font-family: 'Share Tech Mono', 'IBM Plex Mono', monospace;
+            font-size: 0.9em;
+            color: var(--kawaii-pink);
+            white-space: pre;
+            position: relative;
+            z-index: 1;
+            animation: dataScroll 8s linear infinite;
+        }
+
+        @keyframes dataScroll {
+            0%, 80%, 100% { transform: translateY(0); }
+            85% { transform: translateY(-2px); }
+            90% { transform: translateY(2px); }
+            95% { transform: translateY(-1px); }
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        @keyframes terminalFlicker {
+            0%, 95%, 100% { opacity: 1; }
+            96%, 99% { opacity: 0.8; }
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, var(--kawaii-pink), var(--kawaii-blue));
+            border: 2px solid var(--neon-cyan);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Rajdhani', 'Electrolize', monospace;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 0 15px var(--neon-cyan);
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1.1) rotate(2deg); }
+            50% { transform: scale(1.15) rotate(-2deg); }
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(45deg, var(--neon-green), var(--kawaii-yellow));
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar {
+            flex: 0 0 250px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid var(--terminal-green);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .sidebar h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            text-decoration: underline;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--neon-cyan); }
+            100% { text-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-cyan); }
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar li {
+            margin: 8px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .sidebar li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--kawaii-pink);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .content-area {
+            flex: 1;
+            background: rgba(255, 182, 193, 0.1);
+            border: 2px solid var(--kawaii-pink);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: inset 0 0 15px rgba(255, 182, 193, 0.2);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .scrollbox {
+            max-height: 200px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--neon-green);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .scrollbox::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .scrollbox::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
+
+        .scrollbox::-webkit-scrollbar-thumb {
+            background: var(--neon-pink);
+            border-radius: 6px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .gallery-item {
+            background: linear-gradient(135deg, var(--kawaii-blue), var(--kawaii-yellow));
+            border: 2px solid var(--neon-cyan);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 0 20px var(--neon-cyan);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255,255,255,0.3),
+                transparent
+            );
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            opacity: 0;
+        }
+
+        .gallery-item:hover::after {
+            animation: shine 0.5s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .ascii-image {
+            font-size: 0.6em;
+            line-height: 1;
+            color: #000;
+            white-space: pre;
+        }
+
+        .journal-entry {
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 4px solid var(--kawaii-pink);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+        }
+
+        .journal-entry:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateX(5px);
+            transition: all 0.3s ease;
+        }
+
+        .journal-date {
+            color: var(--neon-cyan);
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .collapsible {
+            background: var(--dark-bg);
+            border: 1px solid var(--terminal-green);
+            border-radius: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .collapsible-header {
+            background: linear-gradient(90deg, var(--terminal-green), var(--neon-cyan));
+            color: #000;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .collapsible-header:hover {
+            background: linear-gradient(90deg, var(--neon-cyan), var(--terminal-green));
+        }
+
+        .collapsible-header::after {
+            content: '[+]';
+            float: right;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible.active .collapsible-header::after {
+            content: '[-]';
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(0, 255, 65, 0.1);
+        }
+
+        .collapsible.active .collapsible-content {
+            max-height: 300px;
+            padding: 15px;
+        }
+
+        .footer {
+            background: linear-gradient(90deg, var(--neon-green), var(--kawaii-pink));
+            border: 3px solid var(--neon-cyan);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .visitor-counter {
+            background: #000;
+            color: var(--terminal-green);
+            padding: 5px 10px;
+            border: 1px solid var(--terminal-green);
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .marquee {
+            background: #000;
+            color: var(--neon-pink);
+            padding: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            border: 1px solid var(--neon-pink);
+            margin: 15px 0;
+        }
+
+        .marquee-text {
+            animation: scroll 15s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--kawaii-pink), var(--kawaii-blue));
+            border: 3px solid var(--neon-cyan);
+            border-radius: 15px;
+            padding: 30px;
+            z-index: 1000;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            color: #000;
+            font-weight: bold;
+        }
+
+        .popup.show {
+            display: block;
+            animation: popIn 0.3s ease-out;
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: none;
+                order: 2;
+            }
+            
+            .content-area {
+                order: 1;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+        }
+
+        .retro-button {
+            background: linear-gradient(45deg, var(--kawaii-yellow), var(--kawaii-pink));
+            border: 2px solid var(--neon-green);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .retro-button:hover {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-cyan));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .under-construction {
+            background: repeating-linear-gradient(
+                45deg,
+                #ffff00,
+                #ffff00 20px,
+                #000 20px,
+                #000 40px
+            );
+            color: #000;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #ff0000;
+            margin: 10px 0;
+            animation: flash 1s infinite;
+        }
+
+        @keyframes flash {
+            0%, 50% { background-color: rgba(255, 255, 0, 0.8); }
+            51%, 100% { background-color: rgba(255, 0, 0, 0.8); }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header class="header">
+            <h1>~* KAWAII DIGITAL SHRINE *~</h1>
+            <div class="ascii-art">
+    /\_   _/\
+   (  @ v @  )
+    \  ^_^  /
+     ||||||| 
+   ESTABLISHED 1997
+   [VISITOR ACCESS GRANTED]
+            </div>
+        </header>
+
+        <nav class="nav-bar">
+            <button class="nav-btn active" onclick="showTab('home')">HOME.EXE</button>
+            <button class="nav-btn" onclick="showTab('journal')">JOURNAL.LOG</button>
+            <button class="nav-btn" onclick="showTab('gallery')">GALLERY.DAT</button>
+            <button class="nav-btn" onclick="showTab('music')">MUSIC.MOD</button>
+            <button class="nav-btn" onclick="showTab('code')">CODE.ASM</button>
+            <button class="nav-btn" onclick="showTab('links')">LINKS.HTM</button>
+            <button class="nav-btn" onclick="showTab('terminal')">TERM.BAT</button>
+            <button class="nav-btn" onclick="showTab('guestbook')">GUEST.TXT</button>
+        </nav>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <h3>[SYSTEM STATUS]</h3>
+                <ul>
+                    <li>MOOD: kawaii_overload.exe</li>
+                    <li>STATUS: online_dreaming</li>
+                    <li>CAFFEINE: HIGH_LEVELS</li>
+                    <li>VIBE: nostalgic_terminal</li>
+                    <li>CONNECTION: 56k_aesthetic</li>
+                    <li>RAM: 640k_sufficient</li>
+                    <li>CPU: 486dx2_66mhz</li>
+                </ul>
+
+                <h3>[PROTOCOL STACK]</h3>
+                <div class="scrollbox" style="max-height: 150px;">
+                    <div style="font-family: 'Inconsolata', monospace; font-size: 0.8em;">
+                        <p style="color: var(--neon-cyan);">> TCP/IP established</p>
+                        <p style="color: var(--kawaii-pink);">> HTTP/0.9 handshake</p>
+                        <p style="color: var(--terminal-green);">> KAWAII_PROTOCOL loaded</p>
+                        <p style="color: var(--neon-cyan);">> ASCII_RENDERER initialized</p>
+                        <p style="color: var(--kawaii-yellow);">> NOSTALGIA_FILTER active</p>
+                        <p style="color: var(--neon-pink);">> EMOTIONAL_CORE online</p>
+                        <p style="color: var(--terminal-green);">> PIXEL_DREAMS streaming</p>
+                    </div>
+                </div>
+
+                <h3>[QUICK LINKS]</h3>
+                <ul>
+                    <li><a href="#" style="color: var(--kawaii-pink);">my_diary.txt</a></li>
+                    <li><a href="#" style="color: var(--neon-cyan);">friend_sites.html</a></li>
+                    <li><a href="#" style="color: var(--terminal-green);">art_gallery.gif</a></li>
+                    <li><a href="#" onclick="showPopup()" style="color: var(--kawaii-yellow);">secret_message.exe</a></li>
+                    <li><a href="#" style="color: var(--neon-pink);">mod_collection.s3m</a></li>
+                    <li><a href="#" style="color: var(--neon-cyan);">demo_scene.com</a></li>
+                </ul>
+
+                <div class="visitor-counter">
+                    VISITORS: <span id="counter">001337</span>
+                </div>
+
+                <div class="under-construction">
+                    UNDER CONSTRUCTION
+                    [KAWAII ZONE]
+                </div>
+
+                <div style="background: #000; padding: 10px; border: 1px solid var(--terminal-green); margin: 10px 0; font-family: 'Share Tech Mono', monospace;">
+                    <div style="color: var(--terminal-green); font-size: 0.7em; animation: terminalFlicker 3s infinite;">
+                        > EXECUTING KAWAII.EXE<br>
+                        > LOADING MEMORIES...<br>
+                        > READY FOR INPUT_
+                    </div>
+                </div>
+
+                @keyframes terminalFlicker {
+                    0%, 95%, 100% { opacity: 1; }
+                    96%, 99% { opacity: 0.8; }
+                }
+            </aside>
+
+            <main class="content-area">
+                <div id="home" class="tab-content active">
+                    <h2 style="color: var(--neon-cyan); margin-bottom: 20px;">[WELCOME TO MY DIGITAL REALM]</h2>
+                    
+                    <div class="marquee">
+                        <div class="marquee-text">
+                            *** WELCOME TO THE KAWAII TERMINAL *** ENJOY YOUR STAY IN CYBERSPACE *** 
+                            REMEMBER TO SIGN THE GUESTBOOK *** SPREAD LOVE AND PIXELS ***
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            ABOUT_ME.TXT
+                        </div>
+                        <div class="collapsible-content">
+                            <p>Greetings, fellow netizen! I'm a digital archaeologist preserving the sacred rituals of Web 1.0. 
+                            This shrine celebrates the raw authenticity of the early internet - before corporate algorithms 
+                            sanitized our beautiful chaos.</p>
+                            <br>
+                            <p>I exist in the liminal spaces between terminals and dreams, crafting kawaii experiences 
+                            with ascii hearts and neon nostalgia. Welcome to my corner of cyberspace!</p>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            CURRENT_PROJECTS.EXE
+                        </div>
+                        <div class="collapsible-content">
+                            <div class="scrollbox">
+                                <p>> Building retro web experiences</p>
+                                <p>> Collecting vintage ASCII art</p>
+                                <p>> Documenting forgotten protocols</p>
+                                <p>> Creating kawaii terminal interfaces</p>
+                                <p>> Preserving 90s cyber aesthetics</p>
+                                <p>> Experimenting with digital nostalgia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="retro-button" onclick="showRandomMessage()">RANDOM_THOUGHT.EXE</button>
+                    <button class="retro-button" onclick="changeTheme()">THEME_SHIFT.BAT</button>
+                </div>
+
+                <div id="journal" class="tab-content">
+                    <h2 style="color: var(--kawaii-pink); margin-bottom: 20px;">[DIGITAL DIARY ENTRIES]</h2>
+                    
+                    <div class="scrollbox" style="max-height: 400px;">
+                        <div class="journal-entry">
+                            <div class="journal-date">1997.05.26 - 23:42:15</div>
+                            <p>Today I discovered a new terminal command that makes ASCII hearts dance across my screen. 
+                            The simple beauty of character-based art reminds me why I fell in love with computing. 
+                            There's poetry in the pixels, magic in the monospace...</p>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="journal-date">1997.05.20 - 18:30:07</div>
+                            <p>Built my first animated GIF today! It's a small spinning star, but it represents so much more - 
+                            the democratization of motion graphics, the birth of web animation. Every pixel crafted with love.</p>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="journal-date">1997.05.15 - 14:22:33</div>
+                            <p>The sound of dial-up connecting is like a digital lullaby. That cacophony of electronic handshakes, 
+                            protocols negotiating in electronic tongues. We're all just trying to connect...</p>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="journal-date">1997.05.10 - 09:15:44</div>
+                            <p>Discovered a new BBS today with the most beautiful ANSI art gallery. The community there shares 
+                            my passion for digital aesthetics. Found my tribe in the electronic wilderness.</p>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="journal-date">1997.05.05 - 21:45:12</div>
+                            <p>HTML tables are like digital poetry - structured yet expressive. Every &lt;td&gt; tag is a 
+                            haiku of markup, every nested table a verse in the greater poem of the web.</p>
+                        </div>
+                    </div>
+
+                    <button class="retro-button" onclick="addJournalEntry()">NEW_ENTRY.TXT</button>
+                </div>
+
+                <div id="gallery" class="tab-content">
+                    <h2 style="color: var(--neon-green); margin-bottom: 20px;">[ASCII ART COLLECTION]</h2>
+                    
+                    <div class="gallery">
+                        <div class="gallery-item" onclick="showArtPopup('cat')">
+                            <div class="ascii-image">
+  /\_/\  
+ ( o.o ) 
+  > ^ <  
+            </div>
+                            <p>kawaii_cat.txt</p>
+                        </div>
+
+                        <div class="gallery-item" onclick="showArtPopup('heart')">
+                            <div class="ascii-image">
+   ♡   ♡
+  ♡     ♡
+ ♡       ♡
+♡         ♡
+ ♡       ♡
+  ♡     ♡
+   ♡   ♡
+    ♡ ♡
+     ♡
+            </div>
+                            <p>pixel_heart.asc</p>
+                        </div>
+
+                        <div class="gallery-item" onclick="showArtPopup('star')">
+                            <div class="ascii-image">
+    *
+   ***
+  *****
+ *******
+*********
+ *******
+  *****
+   ***
+    *
+            </div>
+                            <p>cyber_star.dat</p>
+                        </div>
+
+                        <div class="gallery-item" onclick="showArtPopup('flower')">
+                            <div class="ascii-image">
+    @}--}---
+  @}--}-----
+    @}--}---
+      |
+      |
+    \___/
+            </div>
+                            <p>digital_rose.txt</p>
+                        </div>
+
+                        <div class="gallery-item" onclick="showArtPopup('computer')">
+                            <div class="ascii-image">
+ ____________
+|[][][][][] |
+|            |
+|  >prompt_  |
+|            |
+|____________|
+   |||||||||
+   ---------
+            </div>
+                            <p>retro_terminal.asc</p>
+                        </div>
+
+                        <div class="gallery-item" onclick="showArtPopup('moon')">
+                            <div class="ascii-image">
+      ___
+    .--'   '---.
+   /           \
+  |   .     .   |
+  |      _      |
+   \   \___/   /
+    '--_____--'
+            </div>
+                            <p>cyber_moon.txt</p>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            GALLERY_INFO.NFO
+                        </div>
+                        <div class="collapsible-content">
+                            <p>This collection represents hours of careful ASCII craftsmanship. Each piece is a meditation 
+                            on the intersection of technology and art, where limitations breed creativity.</p>
+                            <br>
+                            <p>ASCII art is the purest form of digital expression - using only characters available on 
+                            any terminal, creating beauty from constraint.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="links" class="tab-content">
+                    <h2 style="color: var(--kawaii-yellow); margin-bottom: 20px;">[CYBER CONNECTIONS]</h2>
+                    
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            WEBRINGS.HTM
+                        </div>
+                        <div class="collapsible-content">
+                            <p style="color: var(--neon-cyan);">> Kawaii Terminal Network</p>
+                            <p style="color: var(--kawaii-pink);">> ASCII Art Collective</p>
+                            <p style="color: var(--terminal-green);">> Retro Web Preservation Society</p>
+                            <p style="color: var(--neon-cyan);">> Digital Archaeology Guild</p>
+                            <p style="color: var(--kawaii-yellow);">> Terminal Aesthetics Ring</p>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            COOL_SITES.TXT
+                        </div>
+                        <div class="collapsible-content">
+                            <div class="scrollbox">
+                                <p>> neocities.org - free web hosting with 90s vibes</p>
+                                <p>> textfiles.com - jason scott's digital archive</p>
+                                <p>> ascii-art.de - massive ascii art database</p>
+                                <p>> web.archive.org - preserving digital history</p>
+                                <p>> old-computers.com - vintage hardware museum</p>
+                                <p>>16colo.rs - ansi/ascii art scene archive</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            FRIEND_SITES.HTML
+                        </div>
+                        <div class="collapsible-content">
+                            <p style="color: var(--kawaii-pink);">> kawaii_coder.html - fellow terminal artist</p>
+                            <p style="color: var(--neon-green);">> retro_dreamer.net - 90s web evangelist</p>
+                            <p style="color: var(--neon-cyan);">> pixel_prophet.org - digital mystic</p>
+                            <p style="color: var(--kawaii-yellow);">> ascii_alchemist.com - character wizard</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="music" class="tab-content">
+                    <h2 style="color: var(--neon-pink); margin-bottom: 20px; font-family: 'Audiowide', monospace;">[DIGITAL SOUNDSCAPES]</h2>
+                    
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            TRACKER_MODULES.MOD
+                        </div>
+                        <div class="collapsible-content">
+                            <div class="scrollbox">
+                                <p style="color: var(--neon-cyan);">> future_crew_-_panic.s3m</p>
+                                <p style="color: var(--kawaii-pink);">> skaven_-_catch_that_goblin.mod</p>
+                                <p style="color: var(--terminal-green);">> purple_motion_-_enigma.xm</p>
+                                <p style="color: var(--kawaii-yellow);">> necros_-_point_of_departure.s3m</p>
+                                <p style="color: var(--neon-cyan);">> captain_-_elysium.mod</p>
+                                <p style="color: var(--neon-pink);">> lizardking_-_alcatraz.mod</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <div class="ascii-image" style="font-family: 'IBM Plex Mono', monospace;">
+♪ ♫ ♪ ♫
+▄▄▄▄▄▄▄
+█ ♫ ♪ █
+▀▀▀▀▀▀▀
+            </div>
+                            <p>MOD_PLAYER.EXE</p>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="ascii-image">
+ ┌─────────┐
+ │░░░░░░░░░│
+ │▓▓▓░░░░░░│
+ │░░░░░░░░░│
+ └─────────┘
+            </div>
+                            <p>SPECTRUM.VIS</p>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="ascii-image">
+    ♫
+  ♪   ♪
+♫       ♫
+  ♪   ♪
+    ♫
+            </div>
+                            <p>CHIPFUNK.SID</p>
+                        </div>
+                    </div>
+
+                    <div class="marquee" style="font-family: 'Electrolize', monospace;">
+                        <div class="marquee-text">
+                            *** NOW PLAYING: DIGITAL DREAMS IN C64 STEREO *** 
+                            TRACKER CULTURE LIVES FOREVER *** MOD > MP3 ***
+                        </div>
+                    </div>
+                </div>
+
+                <div id="code" class="tab-content">
+                    <h2 style="color: var(--terminal-green); margin-bottom: 20px; font-family: 'Michroma', monospace;">[CODE FRAGMENTS]</h2>
+                    
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            KAWAII_RENDERER.ASM
+                        </div>
+                        <div class="collapsible-content">
+                            <div class="scrollbox" style="background: #000; font-family: 'JetBrains Mono', monospace; font-size: 0.8em;">
+<pre style="color: var(--terminal-green); margin: 0;">
+MOV AX, 13h    ; Enter VGA mode
+INT 10h        ; Video interrupt
+MOV DI, 0A000h ; Video memory
+MOV ES, DI     ; Set segment
+
+KAWAII_LOOP:
+MOV AL, 0CFh   ; Pink pixel
+STOSB          ; Store and increment
+LOOP KAWAII_LOOP
+
+; Infinite kawaii achieved
+JMP $
+</pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapsible">
+                        <div class="collapsible-header" onclick="toggleCollapsible(this)">
+                            NOSTALGIA.C
+                        </div>
+                        <div class="collapsible-content">
+                            <div class="scrollbox" style="background: #000; font-family: 'Fira Code', monospace; font-size: 0.8em;">
+<pre style="color: var(--neon-cyan); margin: 0;">
+#include &lt;stdio.h&gt;
+#include &lt;kawaii.h&gt;
+
+int main() {
+    printf("Hello, digital world!\n");
+    
+    while(nostalgia_level &lt; MAX_KAWAII) {
+        render_ascii_heart();
+        play_mod_file("future.s3m");
+        nostalgia_level++;
+    }
+    
+    return ETERNAL_LOOP;
+}
+</pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <div class="ascii-image">
+{ code }
+&lt;/html&gt;
+10 PRINT
+GOTO 10
+            </div>
+                            <p>BASIC_MEMORIES</p>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <div class="ascii-image">
+#!/bin/sh
+while true
+do
+  echo "♡"
+done
+            </div>
+                            <p>LOVE_LOOP.SH</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="terminal" class="tab-content">
+                    <h2 style="color: var(--kawaii-yellow); margin-bottom: 20px; font-family: 'Share Tech Mono', monospace;">[TERMINAL INTERFACE]</h2>
+                    
+                    <div style="background: #000; border: 2px solid var(--terminal-green); padding: 20px; font-family: 'IBM Plex Mono', monospace; min-height: 300px;">
+                        <div style="color: var(--terminal-green);">
+                            <p>KAWAII TERMINAL v1.337 (c) 1997 Digital Dreams Corp.</p>
+                            <p>640K RAM SYSTEM READY</p>
+                            <p></p>
+                            <div id="terminal-output">
+                                <p>C:\KAWAII&gt; dir</p>
+                                <p>JOURNAL   TXT    2048  05-26-97  11:42p</p>
+                                <p>GALLERY   DAT    4096  05-25-97   3:14p</p>
+                                <p>DREAMS    EXE   16384  05-24-97   9:30a</p>
+                                <p>NOSTALGIA SYS    1024  05-23-97   7:45p</p>
+                                <p>KAWAII    MOD    8192  05-22-97   2:20p</p>
+                                <p>         5 file(s)     31744 bytes</p>
+                                <p>      1337 bytes free</p>
+                                <p></p>
+                                <p>C:\KAWAII&gt; <span id="cursor" style="animation: blink 1s infinite;">_</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <input type="text" id="terminal-input" placeholder="Enter command..." 
+                               style="background: #000; color: var(--terminal-green); border: 1px solid var(--terminal-green); 
+                                      padding: 8px; font-family: 'IBM Plex Mono', monospace; width: 100%; margin-bottom: 10px;"
+                               onkeypress="handleTerminalInput(event)">
+                        <button class="retro-button" onclick="clearTerminal()">CLEAR.BAT</button>
+                        <button class="retro-button" onclick="runDemo()">DEMO.EXE</button>
+                    </div>
+                </div>
+                    <h2 style="color: var(--neon-pink); margin-bottom: 20px;">[VISITOR GUESTBOOK]</h2>
+                    
+                    <div class="scrollbox" style="max-height: 300px;">
+                        <div class="journal-entry">
+                            <div class="journal-date">cyber_wanderer@terminal.net - 1997.05.25</div>
+                            <p>Amazing site! The ASCII art gallery brought tears to my eyes. Keep preserving the 
+                            digital dreams of yesteryear! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</p>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="journal-date">pixel_poet@bbs.com - 1997.05.23</div>
+                            <p>Your journal entries resonate with my soul. The poetry of protocols, the haiku of HTML - 
+                            you understand the true spirit of the web!</p>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="journal-date">retro_rebel@dial.up - 1997.05.20</div>
+                            <p>This site is pure nostalgia fuel! Takes me back to the golden age of personal homepages. 
+                            Thank you for keeping the dream alive!</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button class="retro-button" onclick="signGuestbook()">SIGN_GUESTBOOK.EXE</button>
+                        <button class="retro-button" onclick="viewStats()">VIEW_STATS.DAT</button>
+                    </div>
+                </div>
+            </main>
+
+            <aside class="sidebar">
+                <h3>[KAWAII STATS]</h3>
+                <ul>
+                    <li>ASCII_ART: 42 pieces</li>
+                    <li>JOURNAL_ENTRIES: 108</li>
+                    <li>CAFFEINE_CONSUMED: 9999ml</li>
+                    <li>PIXELS_PUSHED: ∞</li>
+                    <li>DREAMS_CODED: 256</li>
+                    <li>MOD_FILES: 1337</li>
+                    <li>NOSTALGIA_LEVEL: MAX</li>
+                </ul>
+
+                <h3>[ACTIVE PROCESSES]</h3>
+                <div class="scrollbox" style="max-height: 120px;">
+                    <div style="font-family: 'Inconsolata', monospace; font-size: 0.75em;">
+                        <p style="color: var(--neon-green);">PID 001: kawaii_daemon</p>
+                        <p style="color: var(--kawaii-pink);">PID 002: nostalgia_engine</p>
+                        <p style="color: var(--neon-cyan);">PID 003: ascii_renderer</p>
+                        <p style="color: var(--kawaii-yellow);">PID 004: mod_player</p>
+                        <p style="color: var(--terminal-green);">PID 005: dream_compiler</p>
+                        <p style="color: var(--neon-pink);">PID 006: pixel_pusher</p>
+                        <p style="color: var(--neon-cyan);">PID 007: retro_filter</p>
+                    </div>
+                </div>
+
+                <h3>[RETRO WIDGETS]</h3>
+                <div style="background: #000; padding: 10px; border: 1px solid var(--terminal-green); margin: 10px 0; font-family: 'Share Tech Mono', monospace;">
+                    <div style="color: var(--terminal-green); font-size: 0.8em;">
+                        SYSTEM TIME:<br>
+                        <span id="clock">00:00:00</span>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(45deg, var(--kawaii-pink), var(--kawaii-blue)); 
+                            padding: 10px; border: 2px solid var(--neon-cyan); margin: 10px 0; 
+                            text-align: center; color: #000; font-weight: bold; font-family: 'Rajdhani', sans-serif;">
+                    KAWAII LEVEL:<br>
+                    <div style="background: #000; color: var(--neon-green); padding: 5px; margin-top: 5px; font-family: 'JetBrains Mono', monospace;">
+                        [████████░░] <span id="kawaii-meter">80</span>%
+                    </div>
+                </div>
+
+                <div style="background: rgba(0, 0, 0, 0.8); padding: 10px; border: 1px solid var(--neon-pink); margin: 10px 0; font-family: 'Electrolize', monospace;">
+                    <div style="color: var(--neon-pink); font-size: 0.7em; animation: dataFlow 2s linear infinite;">
+                        <p>> SCANNING NETWORKS...</p>
+                        <p>> UPLINK ESTABLISHED</p>
+                        <p>> KAWAII PROTOCOL ACTIVE</p>
+                    </div>
+                </div>
+
+                @keyframes dataFlow {
+                    0%, 90%, 100% { opacity: 1; }
+                    95% { opacity: 0.7; }
+                }
+
+                <div style="background: #000080; padding: 8px; border: 2px solid var(--kawaii-yellow); margin: 10px 0; text-align: center;">
+                    <div style="color: var(--kawaii-yellow); font-size: 0.8em; font-family: 'Orbitron', monospace; animation: pulse 3s infinite;">
+                        [ RETRO ZONE ]<br>
+                        EST. 1997
+                    </div>
+                </div>
+
+                <button class="retro-button" onclick="playSound()">BEEP.WAV</button>
+                <button class="retro-button" onclick="hackTheGibson()" style="font-family: 'Michroma', monospace;">HACK.EXE</button>
+            </aside>
+        </div>
+
+        <footer class="footer">
+            <div style="margin-bottom: 10px;">
+                ~* KAWAII DIGITAL SHRINE *~ EST. 1997 - POWERED BY NOSTALGIA & CAFFEINE
+            </div>
+            <div style="font-size: 0.8em;">
+                BEST VIEWED IN NETSCAPE 4.0+ | 800x600 | 256 COLORS | SOUND BLASTER COMPATIBLE
+            </div>
+            <div class="visitor-counter" style="margin-top: 10px;">
+                PAGE LAST UPDATED: 1997.05.26 23:59:59 GMT
+            </div>
+        </footer>
+    </div>
+
+    <div id="popup" class="popup">
+        <button class="close-btn" onclick="hidePopup()">[X]</button>
+        <div id="popup-content">
+            SECRET MESSAGE UNLOCKED!<br><br>
+            You found the hidden command! 
+            Welcome to the inner circle of digital dreamers.
+            <br><br>
+            ASCII art is not just decoration - it's meditation,
+            each character a conscious choice in the dance of pixels.
+        </div>
+    </div>
+
+    <script>
+        // Initialize stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starChars = ['*', '·', '°', '˚', '✦', '✧'];
+            
+            for(let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.textContent = starChars[Math.floor(Math.random() * starChars.length)];
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // Tab switching
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Collapsible content
+        function toggleCollapsible(header) {
+            const collapsible = header.parentElement;
+            collapsible.classList.toggle('active');
+        }
+
+        // Popup functions
+        function showPopup() {
+            document.getElementById('popup').classList.add('show');
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').classList.remove('show');
+        }
+
+        function showArtPopup(artType) {
+            const messages = {
+                cat: 'This kawaii cat represents the intersection of feline aesthetics and terminal culture.',
+                heart: 'A pixel heart beating in digital time, pulsing with electronic love.',
+                star: 'Stars in cyberspace - guiding lights in the vast digital ocean.',
+                flower: 'Digital flora blooming in ASCII gardens, beauty from constraint.',
+                computer: 'The sacred terminal - our window into digital consciousness.',
+                moon: 'Cyber moon watching over the electronic night sky.'
+            };
+            
+            document.getElementById('popup-content').innerHTML = 
+                `ASCII ART: ${artType.toUpperCase()}<br><br>${messages[artType]}`;
+            showPopup();
+        }
+
+        // Interactive features
+        function showRandomMessage() {
+            const thoughts = [
+                'Every pixel tells a story...',
+                'In the beginning was the command line...',
+                'ASCII dreams in electric sheep...',
+                'The terminal is my canvas...',
+                'Nostalgia.exe has stopped working...',
+                'Loading kawaii protocols...',
+                'Digital archaeology in progress...'
+            ];
+            
+            const randomThought = thoughts[Math.floor(Math.random() * thoughts.length)];
+            alert(`[RANDOM_THOUGHT.EXE]\n\n${randomThought}`);
+        }
+
+        let themeToggle = false;
+        function changeTheme() {
+            themeToggle = !themeToggle;
+            const root = document.documentElement;
+            
+            if(themeToggle) {
+                root.style.setProperty('--neon-pink', '#00ff00');
+                root.style.setProperty('--neon-cyan', '#ff00ff');
+                root.style.setProperty('--kawaii-pink', '#add8e6');
+                root.style.setProperty('--kawaii-blue', '#ffb6c1');
+            } else {
+                root.style.setProperty('--neon-pink', '#ff00ff');
+                root.style.setProperty('--neon-cyan', '#00ffff');
+                root.style.setProperty('--kawaii-pink', '#ffb6c1');
+                root.style.setProperty('--kawaii-blue', '#add8e6');
+            }
+        }
+
+        function addJournalEntry() {
+            const entry = prompt('Enter your digital thoughts:');
+            if(entry) {
+                const journalContainer = document.querySelector('#journal .scrollbox');
+                const newEntry = document.createElement('div');
+                newEntry.className = 'journal-entry';
+                newEntry.innerHTML = `
+                    <div class="journal-date">1997.05.26 - ${new Date().toLocaleTimeString()}</div>
+                    <p>${entry}</p>
+                `;
+                journalContainer.insertBefore(newEntry, journalContainer.firstChild);
+            }
+        }
+
+        function signGuestbook() {
+            const name = prompt('Enter your handle:');
+            const message = prompt('Leave a message for fellow netizens:');
+            
+            if(name && message) {
+                const guestbookContainer = document.querySelector('#guestbook .scrollbox');
+                const newEntry = document.createElement('div');
+                newEntry.className = 'journal-entry';
+                newEntry.innerHTML = `
+                    <div class="journal-date">${name}@terminal.net - 1997.05.26</div>
+                    <p>${message}</p>
+                `;
+                guestbookContainer.insertBefore(newEntry, guestbookContainer.firstChild);
+            }
+        }
+
+        function viewStats() {
+            alert('[SITE_STATS.DAT]\n\nVisitors: 1337\nPages Served: 9999\nASCII Art Views: 42000\nCoffee Cups: ∞\nDreams Digitized: 256');
+        }
+
+        // Terminal functions
+        function handleTerminalInput(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('terminal-input');
+                const output = document.getElementById('terminal-output');
+                const command = input.value.toLowerCase().trim();
+                
+                const responses = {
+                    'help': 'Available commands: help, kawaii, demo, ascii, clear, hack, love',
+                    'kawaii': '♡ KAWAII LEVEL INCREASED ♡',
+                    'demo': 'Loading DEMO.EXE... [████████████] 100%',
+                    'ascii': '(◕‿◕)♡ ☆ ♪ ♫ ☆ (◕‿◕)♡',
+                    'clear': '',
+                    'hack': 'ACCESS DENIED. Nice try, netizen.',
+                    'love': 'Love is the ultimate protocol ♡',
+                    'dir': 'KAWAII.EXE  DREAMS.BAT  NOSTALGIA.SYS  TERMINAL.COM',
+                    'time': new Date().toLocaleTimeString(),
+                    'whoami': 'You are a digital archaeologist in the kawaii terminal.',
+                    'date': new Date().toLocaleDateString()
+                };
+                
+                // Add command to output
+                output.innerHTML += `<p>C:\\KAWAII&gt; ${input.value}</p>`;
+                
+                if (command === 'clear') {
+                    output.innerHTML = '<p>C:\\KAWAII&gt; <span id="cursor" style="animation: blink 1s infinite;">_</span></p>';
+                } else {
+                    const response = responses[command] || `'${command}' is not recognized as a kawaii command.`;
+                    output.innerHTML += `<p style="color: var(--kawaii-pink);">${response}</p>`;
+                    output.innerHTML += '<p>C:\\KAWAII&gt; <span id="cursor" style="animation: blink 1s infinite;">_</span></p>';
+                }
+                
+                input.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+
+        function clearTerminal() {
+            document.getElementById('terminal-output').innerHTML = 
+                '<p>C:\\KAWAII&gt; <span id="cursor" style="animation: blink 1s infinite;">_</span></p>';
+        }
+
+        function runDemo() {
+            const output = document.getElementById('terminal-output');
+            output.innerHTML += '<p>C:\\KAWAII&gt; demo</p>';
+            output.innerHTML += '<p style="color: var(--neon-cyan);">Loading KAWAII_DEMO.EXE...</p>';
+            
+            setTimeout(() => {
+                output.innerHTML += '<p style="color: var(--kawaii-pink);">♡ ♪ ♫ DIGITAL DREAMS ACTIVATED ♫ ♪ ♡</p>';
+                output.innerHTML += '<p>C:\\KAWAII&gt; <span id="cursor" style="animation: blink 1s infinite;">_</span></p>';
+                output.scrollTop = output.scrollHeight;
+            }, 1000);
+        }
+
+        function hackTheGibson() {
+            const messages = [
+                'Hack the planet!',
+                'Access denied... or is it?',
+                'The Gibson is impenetrable!',
+                'Zero Cool was here',
+                'Crash override initiated',
+                'They\'re trashing our rights!'
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            alert(`[HACK.EXE]\n\n${randomMessage}`);
+        }
+
+        // Enhanced kawaii meter animation
+        function updateKawaiiMeter() {
+            const meter = document.getElementById('kawaii-meter');
+            if (meter) {
+                let level = parseInt(meter.textContent);
+                level = (level + Math.floor(Math.random() * 5)) % 101;
+                meter.textContent = level;
+                
+                const bar = '[' + '█'.repeat(Math.floor(level/10)) + '░'.repeat(10 - Math.floor(level/10)) + ']';
+                meter.parentElement.childNodes[0].textContent = bar + ' ';
+            }
+        }
+
+        // Update clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // Update visitor counter animation
+        function animateCounter() {
+            const counter = document.getElementById('counter');
+            let count = parseInt(counter.textContent);
+            count += Math.floor(Math.random() * 3);
+            counter.textContent = count.toString().padStart(6, '0');
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            updateClock();
+            setInterval(updateClock, 1000);
+            setInterval(animateCounter, 5000);
+        });
+
+        // Easter eggs
+        let konamiCode = [];
+        const targetSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', function(e) {
+            konamiCode.push(e.code);
+            if(konamiCode.length > 10) konamiCode.shift();
+            
+            if(konamiCode.join(',') === targetSequence.join(',')) {
+                document.getElementById('popup-content').innerHTML = 
+                    'KONAMI CODE ACTIVATED!<br><br>♡ KAWAII LEVEL MAXIMUM ♡<br><br>You are now a certified digital archaeologist!';
+                showPopup();
+                konamiCode = [];
+            }
+        });
+    </script>
+</body>
+</html>
